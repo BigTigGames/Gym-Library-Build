@@ -1,0 +1,16 @@
+# Netlify Headers for Unity WebGL Gzip compressed builds
+/Build/*.data.gz
+  Content-Type: application/octet-stream
+  Content-Encoding: gzip
+
+/Build/*.wasm.gz
+  Content-Type: application/wasm
+  Content-Encoding: gzip
+
+/Build/*.js.gz
+  Content-Type: application/javascript
+  Content-Encoding: gzip
+
+/Build/*.symbols.json.gz
+  Content-Type: application/octet-stream
+  Content-Encoding: gzip
