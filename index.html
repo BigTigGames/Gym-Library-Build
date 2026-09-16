@@ -61,9 +61,11 @@
         return false;
       }());
 
+      // Cap devicePixelRatio to 1 globally to prevent massive VRAM exhaustion and Opera GX PC crashes
+      config.devicePixelRatio = 1;
+
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         container.className = "unity-mobile";
-        config.devicePixelRatio = 1;
       }
       loadingCover.style.display = "";
 
