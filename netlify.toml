@@ -1,9 +1,4 @@
 # Netlify configuration for Unity WebGL Gzip compressed builds
-
-[build]
-  publish = "."
-  command = "cat \"Build/Gym Library Build.data.gz.part1\" \"Build/Gym Library Build.data.gz.part2\" > \"Build/Gym Library Build.data.gz\""
-
 [[headers]]
   for = "/Build/*.data.gz"
   [headers.values]
