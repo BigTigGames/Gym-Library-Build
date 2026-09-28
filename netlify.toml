@@ -1,3 +1,7 @@
+[build]
+  publish = "."
+  command = "cat Build/*.data.gz.part* > \"Build/Gym Library Build.data.gz\""
+
 # Netlify configuration for Unity WebGL Gzip compressed builds
 [[headers]]
   for = "/Build/*.data.gz"
