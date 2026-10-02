@@ -1,8 +1,7 @@
+# Netlify configuration for Unity WebGL builds
 [build]
   publish = "."
-  command = "cat Build/*.data.gz.part* > \"Build/Gym Library Build.data.gz\""
 
-# Netlify configuration for Unity WebGL Gzip compressed builds
 [[headers]]
   for = "/Build/*.data.gz"
   [headers.values]
@@ -26,3 +25,27 @@
   [headers.values]
     Content-Type = "application/octet-stream"
     Content-Encoding = "gzip"
+
+[[headers]]
+  for = "/Build/*.data.br"
+  [headers.values]
+    Content-Type = "application/octet-stream"
+    Content-Encoding = "br"
+
+[[headers]]
+  for = "/Build/*.wasm.br"
+  [headers.values]
+    Content-Type = "application/wasm"
+    Content-Encoding = "br"
+
+[[headers]]
+  for = "/Build/*.js.br"
+  [headers.values]
+    Content-Type = "application/javascript"
+    Content-Encoding = "br"
+
+[[headers]]
+  for = "/Build/*.symbols.json.br"
+  [headers.values]
+    Content-Type = "application/octet-stream"
+    Content-Encoding = "br"
