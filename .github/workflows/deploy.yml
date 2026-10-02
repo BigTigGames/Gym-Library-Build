@@ -5,25 +5,18 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install & Build
+      - name: Combine Split Files
         run: |
-          npm install
-          npm run build
+          cat Build/*.data.gz.part* > "Build/Gym Library Build.data.gz" || true
 
       - name: Deploy to Netlify
-        uses: jsmrcaga/action-netlify-deploy@v2
-        with:
+        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_DEPLOY_TO_PROD: true
-          build_directory: dist # Change to 'build' or 'out' if needed
+        run: |
+          npx netlify-cli deploy --dir=. --prod
